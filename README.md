@@ -1,9 +1,12 @@
-# This Project was created from the following 4 commands
+# strapi-quickstart
+### `create`
 ```
 npx create-strapi-app@latest . --quickstart
 
 npm i
-
+```
+### `dockerize`
+```
 npx @strapi-community/dockerize
 
 docker-compose up --build
