@@ -3,7 +3,7 @@ services:
   strapi-quickstart:
     container_name: strapi-quickstart
     build: .
-    image: strapi-quickstart:latest
+    image: strapiquickstart.azurecr.io/strapi/strapiquickstart
     restart: unless-stopped
     env_file: .env
     environment:
@@ -53,44 +53,44 @@ volumes:
   strapi-quickstart-data:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   config:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   src:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   package:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   yarn:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   env:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
   publicuploads:
       driver: azure_file
       driver_opts:
-        share_name: aci-strapi-volume
-        storage_account_name: dockeracistorage
+        share_name: strapi-quickstart
+        storage_account_name: baserowmaster
 
 networks:
   strapi-quickstart:
