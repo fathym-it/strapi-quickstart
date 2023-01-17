@@ -1,15 +1,22 @@
+FROM node:12-alpine
 
-FROM node:16-alpine
-# Installing libvips-dev for sharp Compatability
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
-ARG NODE_ENV=development
-ENV NODE_ENV=${NODE_ENV}
-WORKDIR /opt/
-COPY ./package.json ./yarn.lock ./
-ENV PATH /opt/node_modules/.bin:$PATH
-RUN yarn config set network-timeout 600000 -g && yarn install
-WORKDIR /opt/app
-COPY ./ .
+ENV PORT 1337
+ENV HOST 0.0.0.0
+ENV NODE_ENV production
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json /usr/src/app/
+COPY yarn.lock /usr/src/app/
+RUN yarn install
+
+# Bundle app source
+COPY . /usr/src/app
+
 RUN yarn build
 EXPOSE 1337
-CMD ["yarn", "develop"]
+
+CMD [ "yarn", "start" ]
