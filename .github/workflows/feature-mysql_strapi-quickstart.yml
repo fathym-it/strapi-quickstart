@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_fb1172b383da4197bebc79d7a0ecdf0b }}/appsvc/staticsite:${{ github.sha }}
+        tags: ${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'strapi-quickstart'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_329468ed7cc74688b7906f13af1d8ada }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_fb1172b383da4197bebc79d7a0ecdf0b }}/appsvc/staticsite:${{ github.sha }}'
+        images: '${{ github.sha }}'
