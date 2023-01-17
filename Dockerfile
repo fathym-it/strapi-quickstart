@@ -4,7 +4,7 @@ ENV PORT 1337
 ENV HOST 0.0.0.0
 ENV NODE_ENV production
 
-
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
 
 # Install app dependencies
 WORKDIR /opt/
